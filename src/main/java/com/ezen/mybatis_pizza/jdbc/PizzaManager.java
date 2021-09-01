@@ -34,17 +34,17 @@ public class PizzaManager {
 					throws SQLException {
 		StringBuilder sb = new StringBuilder();
 
-		sb.append("insert into order_item (order_id, menu_id) ");
-		sb.append("select last_insert_id(), menu_id ");
+		sb.append("insert into order_item ");
+		sb.append("(order_id, menu_id) select ");
+		sb.append(order_Id);
+		sb.append(", menu_id ");
 		sb.append("from pizza_menu pm ");
 		sb.append("where pm.menu_name = '");
 		sb.append(menu_name);
 		sb.append("'");
 
-		String sql = sb.toString();
-
 		try (Statement stmt = conn.createStatement()) {
-			return stmt.executeUpdate(sql);
+			return stmt.executeUpdate(sb.toString());
 		} catch (SQLException e) {
 			throw new SQLException("주문 항목 저장 실패!");
 		}
@@ -67,12 +67,12 @@ public class PizzaManager {
 				if (generatedKeys.next()) {
 					int order_id = (int) generatedKeys.getLong(1);
 					return order_id;
+				} else {
+					throw new SQLException("주문 번호 채취 실패");
 				}
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new SQLException("주문 정보 저장 실패");
 		}
-		return 0;
 	}
 }
