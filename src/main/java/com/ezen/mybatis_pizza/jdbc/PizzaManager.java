@@ -16,13 +16,16 @@ public class PizzaManager {
 		String menu_name = "마카리타";
 
 		try (Connection conn = DBCPDataSource.getConnection()) {
+			conn.setAutoCommit(false);
+			
 			int order_Id = createPizzaOrder(cust_name, conn);
 
 			if (order_Id > 0) {
 				createOrderItem(order_Id, menu_name, conn);
+				conn.commit();
 				System.out.println("주문 저장 완료!");
 			} else {
-				new SQLException("주문 저장 실패!");
+				throw new SQLException("주문 저장 실패!");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -72,6 +75,7 @@ public class PizzaManager {
 				}
 			}
 		} catch (SQLException e) {
+			conn.rollback();
 			throw new SQLException("주문 정보 저장 실패");
 		}
 	}
