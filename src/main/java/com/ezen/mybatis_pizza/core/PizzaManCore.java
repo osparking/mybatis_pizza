@@ -22,7 +22,7 @@ public class PizzaManCore {
 		main.createPizzaOrder(cust_name, menu_name);
 	}
 
-	private int createPizzaOrder(String cust_name, String menu_name) {
+	private void createPizzaOrder(String cust_name, String menu_name) {
 		Map<String, Object> orderMap = new HashMap<>();
 
 		orderMap.put("cust_name", cust_name);
@@ -31,17 +31,21 @@ public class PizzaManCore {
 		try {
 			sqlSession = getSqlSession();
 			sqlSession.insert("createPizzaOrder", orderMap);
-			Long newID = (Long) orderMap.get("order_id");
+			Long order_id = (Long) orderMap.get("order_id");
+			System.out.println("삽입된 주문 ID: " + order_id);
 			
-			System.out.println("삽입된 주문 ID: " + newID);
-//			sqlSession.insert("createOrderItem", orderMap);
+			orderMap.clear();
+			
+			orderMap.put("order_id", order_id);
+			orderMap.put("menu_name", menu_name);
+			sqlSession.insert("createOrderItem", orderMap);
+			Long item_id = (Long) orderMap.get("item_id");
+			System.out.println("주문된 항목 ID: " + item_id);
+			
 			sqlSession.commit();
-			
-			return 1;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return 0;
 	}
 
 	//@formatter:off
