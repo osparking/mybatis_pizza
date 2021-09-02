@@ -12,8 +12,10 @@
 		<setting name="defaultStatementTimeout" value="100" />
 	</settings>
 	<typeAliases>
-		<typeAlias alias="PizzaOrderDVO"
-			type="com.ezen.mybatis_pizza.core.PizzaOrderDVO" />
+		<typeAlias alias="OrderDVO"
+			type="com.ezen.mybatis_pizza.procedure.OrderDVO" />
+		<typeAlias alias="MenuDVO"
+			type="com.ezen.mybatis_pizza.procedure.MenuDVO" />
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">

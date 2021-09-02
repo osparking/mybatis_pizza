@@ -9,5 +9,5 @@ public interface OrderMapper {
 	@Delete ("{CALL delete_old_orders(" + 
 			" #{ order_id, mode = IN, jdbcType = INTEGER})} ")
 	@Options(statementType = StatementType.CALLABLE)
-	public void callDelete_old_orders(PizzaOrderDVO pizzaOrderDVO);
+	public void callDelete_old_orders(OrderDVO pizzaOrderDVO);
 }

@@ -2,12 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="order_mapper">
-	<resultMap id="cursorData" type="PizzaOrderDVO">
-		<result property="sex" column="sex" />
-		<result property="name" column="name" />
-		<result property="owner" column="owner" />
-		<result property="species" column="species" />
-		<result property="birth" column="birth" />
-		<result property="death" column="death" />
-	</resultMap>
+<!-- 	<resultMap id="cursorData" type="OrderDVO">
+		<result property="order_id" column="sex" />
+		<result property="cust_id" column="name" />
+		<result property="cust_name" column="owner" />
+		<result property="order_time" column="species" />
+	</resultMap> -->
+	
+<!-- 	<resultMap id="cursorData" type="MenuDVO">
+		<result property="menu_id" column="menu_id" />
+		<result property="menu_name" column="menu_name" />
+		<result property="menu_price" column="menu_price" />
+	</resultMap> -->
 </mapper>

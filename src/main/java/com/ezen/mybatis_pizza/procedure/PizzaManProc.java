@@ -1,17 +1,27 @@
 package com.ezen.mybatis_pizza.procedure;
 
-import com.ezen.mybatis_pizza.core.PizzaOrderDVO;
-
 public class PizzaManProc {
 
 	public static void main(String[] args) {
 		var main = new PizzaManProc();
-		main.callDelete_old_orders();
+//		main.callDelete_old_orders();
+		main.getPizzaMenu();
+	}
+	
+	private void getPizzaMenu() {
+		var menuDAOanno = new MenuDAOanno();
+		
+		try {
+			var menu = menuDAOanno.getPizzaMenu();
+			menu.stream().forEach(System.out::println);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void callDelete_old_orders() {
-		PizzaOrderDVO orderDvo = new PizzaOrderDVO();
-		int order_id = 11;
+		var orderDvo = new OrderDVO();
+		int order_id = 1;
 		
 		orderDvo.setOrder_id(order_id);
 		
