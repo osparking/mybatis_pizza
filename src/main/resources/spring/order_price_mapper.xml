@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="petmapper">
+<mapper namespace="ordermapper">
 	<!-- Add SQL statements -->
-	<select id="getOrderPrices" parameterType = "java.lang.String"
+	<select id="getOrderPrices" parameterType = "java.util.Map"
 			resultType="OrderPriceDVO">
 		select po.order_id as `주문ID`, c.cust_id `고객ID`, 
 			date_format(po.order_time, '%Y-%m-%d') as `주문일`,

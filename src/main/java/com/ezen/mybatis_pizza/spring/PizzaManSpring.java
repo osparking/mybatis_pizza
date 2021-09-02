@@ -21,10 +21,11 @@ public class PizzaManSpring {
 			 */
 			Map<String, Object> custMap = new HashMap<>();
 			
-			custMap.put("cust_name", "장민석");
+			custMap.put("cust_name", "임주하");
 			
 			List <OrderPriceDVO> orders = 
 					orderDaoImpl.getOrderPrices(custMap);
+			
 			System.out.println("--- 장민석 주문 목록 ---");
 			orders.stream().forEach(System.out::println);
 		} catch (Exception ex) {
