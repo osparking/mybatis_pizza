@@ -21,7 +21,7 @@ public class PizzaManProc {
 	
 	private void callDelete_old_orders() {
 		var orderDvo = new OrderDVO();
-		int order_id = 4;
+		int order_id = 14;
 		
 		orderDvo.setOrder_id(order_id);
 		

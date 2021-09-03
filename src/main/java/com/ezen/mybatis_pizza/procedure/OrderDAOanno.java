@@ -15,6 +15,7 @@ public class OrderDAOanno implements OrderDAO {
 		OrderMapper mapper = sqlSession.getMapper(OrderMapper.class);
 
 		mapper.callDelete_old_orders(order_id);
+		sqlSession.commit();
 	}
 
 	private static SqlSession getSqlSession() throws Exception {
